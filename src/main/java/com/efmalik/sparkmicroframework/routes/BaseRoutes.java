@@ -17,12 +17,12 @@ public class BaseRoutes {
     private BaseDao dao;
 
     public void initRoutes() {
-        get(base + "/", (request, response) -> {
+        get(base, (request, response) -> {
             // Show list data
             return JsonUtils.getInstance().toJson(dao.list());
         });
 
-        get(base, (request, response) -> {
+        get(base + "/", (request, response) -> {
             // Show list data
             return JsonUtils.getInstance().toJson(dao.list());
         });
@@ -32,17 +32,17 @@ public class BaseRoutes {
             return JsonUtils.getInstance().toJson(dao.get(Integer.valueOf(request.params().get(":id"))));
         });
 
-        post(base + "/", (request, response) -> {
+        post(base, (request, response) -> {
             // Create something
             return "{\"status\":\"data saved\"}";
         });
 
-        put(base + "/", (request, response) -> {
+        put(base, (request, response) -> {
             // Update something
             return "{\"status\":\"data updated\"}";
         });
 
-        delete(base + "/", (request, response) -> {
+        delete(base, (request, response) -> {
             // Annihilate something
             return "{\"status\":\"data deleted\"}";
         });
